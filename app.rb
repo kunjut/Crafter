@@ -14,25 +14,9 @@ class Comment < ActiveRecord::Base
 end
 
 before do
-	# init_db
 end
 
 configure do
-	# init_db
-	# @db.execute 'CREATE TABLE IF NOT EXISTS 
-	# Articles (
-	# 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	# 	createdDate DATA,
-	# 	authorName TEXT,
-	# 	articleText TEXT
-	# )'
-	# @db.execute 'CREATE TABLE IF NOT EXISTS 
-	# Comments (
-	# 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	# 	createdDate DATA,
-	# 	commentText TEXT,
-	# 	article_id
-	# )'
 end
 
 get '/' do
