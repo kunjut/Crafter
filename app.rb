@@ -32,7 +32,7 @@ end
 get '/details/:xid' do
 	@article = Article.find(params[:xid])
 
-	@comments = Comment.all
+	@comments = Comment.order "created_at"
 
 	erb :details
 end
