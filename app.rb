@@ -20,8 +20,8 @@ configure do
 end
 
 get '/' do
-	# @articles = @db.execute 'SELECT * FROM Articles ORDER BY id DESC'
-	 erb "index"			
+	@articles = Article.order "created_at DESC"
+	erb :index			
 end
 
 get '/newpost' do

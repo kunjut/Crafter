@@ -3,9 +3,9 @@
 <p>All that is written on the site, immediately gets to this page</p><hr/>
 
 <% @articles.each do |i| %><br />
-    <%= i['articleText'] %><br /><br />
-    <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= i['createdDate'] %> •</span>
-    <span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= i['authorName'] %></span>
+    <%= i['author_content'] %><br /><br />
+    <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= i['created_at'] %> •</span>
+    <span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= i['author_name'] %></span>
     <br /><a href="/details/<%= i['id'] %>" style="font-size: 85%; font-style: italic;">Details →</a>
     <hr />
 <% end %>
