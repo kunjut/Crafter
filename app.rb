@@ -25,33 +25,14 @@ get '/' do
 end
 
 get '/newpost' do
-	erb "newpost"
+	erb :newpost
 end
 
 post '/newpost' do
-	# @authorName = params[:authorName]
-	# @articleText = params[:articleText]
+	add = Article.new params[:article]
+	add.save
 
-	# if @authorName.length <= 0
-	# 	@error = "What about author name?"
-	# 	return erb :newpost
-	# elsif @articleText.length <= 0
-	# 	@error = "Try type article text"
-	# 	return erb :newpost
-	# end
-
-	# @db.execute 'INSERT INTO 
-	# Articles (
-	# 	createdDate, 
-	# 	authorName, 
-	# 	articleText
-	# ) VALUES (
-	# 	datetime(), 
-	# 	?, 
-	# 	?
-	# )', [@authorName, @articleText]
-
-	# redirect to '/'
+	redirect to '/'
 end
 
 def some_select article_id
