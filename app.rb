@@ -12,12 +12,6 @@ end
 class Comment < ActiveRecord::Base
 end
 
-before do
-end
-
-configure do
-end
-
 get '/' do
 	@articles = Article.order "created_at DESC"
 	
@@ -38,6 +32,8 @@ end
 get '/details/:xid' do
 	@article = Article.find(params[:xid])
 
+	@comments = Comment.all
+
 	erb :details
 end
 
@@ -46,6 +42,6 @@ post '/details/:xid' do
 
 	add = Comment.new params[:comment]
 	add.save
-
+	
 	redirect to "/details/#{@article.id}"	
 end

@@ -8,10 +8,17 @@
 <a href="/" style="font-size: 85%; font-style: italic;">← Back</a>
 <hr />
 
-
 <!-- Если нет комментариев, то не выводить для них заголовок -->
- 
+<% if @comments != [] %>
+  <br /><h2><%='Comments' %></h2><br />
+<% end %>
+
 <!-- Вывод комментариев -->
+<% @comments.each do |i| %><br />
+    <%= i.user_comment %><br /><br />
+    <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= i.created_at %></span>
+    <hr />
+<% end %>
 
 <br />
 <h2>Discuss this article</h2>
