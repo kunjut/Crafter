@@ -6,7 +6,6 @@ require 'sinatra/activerecord'
 
 set :database, "sqlite3:crafter.db"
 
-
 class Article < ActiveRecord::Base
 end
 
@@ -35,27 +34,14 @@ post '/newpost' do
 	redirect to '/'
 end
 
-def some_select article_id
-	# # Выбор статьи по id
-	# db = @db.execute 'SELECT * FROM Articles WHERE id=?', [article_id]
-	# @row = db[0]
-	# # Выбор всех коментов по id статьи
-	# @comment = @db.execute 'SELECT * FROM Comments WHERE article_id=?', [article_id]
-end
-
-get '/details/:article_id' do
-	# article_id = params[:article_id]
-
-	# some_select article_id #основной вызов
-	
-	# erb :details
+get '/details/:xid' do
+	@article = Article.find(params[:xid])
+	erb :details
 end
 
 post '/details/:article_id' do
 	# article_id = params[:article_id]
 	# @commentText = params[:commentText]
-
-	# some_select article_id #допо-ный вызов, чтобы валидация работала
 
 	# if @commentText.length <= 0
 	# 	@error = 'Put the cockie down!'
