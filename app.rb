@@ -20,6 +20,7 @@ end
 
 get '/' do
 	@articles = Article.order "created_at DESC"
+	
 	erb :index			
 end
 
@@ -36,28 +37,15 @@ end
 
 get '/details/:xid' do
 	@article = Article.find(params[:xid])
+
 	erb :details
 end
 
-post '/details/:article_id' do
-	# article_id = params[:article_id]
-	# @commentText = params[:commentText]
+post '/details/:xid' do
+	@article = Article.find(params[:xid])
 
-	# if @commentText.length <= 0
-	# 	@error = 'Put the cockie down!'
-	# 	return erb :details	
-	# end
+	add = Comment.new params[:comment]
+	add.save
 
-	# @db.execute 'INSERT INTO 
-	# Comments (
-	# 	createdDate, 
-	# 	commentText,
-	# 	article_id
-	# ) VALUES (
-	# 	datetime(), 
-	# 	?,
-	# 	?
-	# )', [@commentText, article_id]
-
-	# redirect to ('/details/' + article_id)	
+	redirect to "/details/#{@article.id}"	
 end
